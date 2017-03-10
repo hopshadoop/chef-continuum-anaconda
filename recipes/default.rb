@@ -7,7 +7,10 @@
 # All rights reserved - Do Not Redistribute
 #
 
-include_recipe 'apt::default'
+case node.platform_family
+when "debian"
+  include_recipe 'apt::default'
+end  
 # ubuntu: base docker images don't have bzip installed, which the anaconda
 # installer needs
 include_recipe 'bzip2::default'
